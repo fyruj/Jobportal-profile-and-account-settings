@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Job Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="portal">
+
+    <!-- Left side -->
+    <div id="sidebar">
+
+      <h2>JobPortal</h2>
+
+      <button onclick="showPage('dashboard')">Dashboard</button>
+      <button onclick="showPage('profile')">My Profile</button>
+      <button onclick="showPage('applications')">Applications</button>
+      <button onclick="showPage('resumes')">Resumes</button>
+      <button onclick="showPage('savedJobs')">Saved Jobs</button>
+
+      <button id="logoutButton" onclick="logout()">Logout</button>
+
+    </div>
+
+    <!-- Right side -->
+    <div id="content">
+
+      <!-- Profile page -->
+      <div id="profile" class="page">
+
+        <h2>My Profile</h2>
+        <hr>
+
+        <div id="photoBox">
+          <img id="photo" alt="Your photo">
+          <p id="photoText">Your Photo</p>
+        </div>
+
+        <label>Change Photo</label>
+        <input
+          id="photoFile"
+          type="file"
+          accept="image/*"
+          onchange="changePhoto()"
+        >
+
+        <label>Name</label>
+        <input id="name" type="text" value="Kamrun Nahar Mahi">
+
+        <label>Email</label>
+        <input id="email" type="email" value="student@example.com">
+
+        <label>Phone</label>
+        <input id="phone" type="text" placeholder="Enter phone number">
+
+        <h3>Change Password</h3>
+        <p class="note">Practice fields only. No password is changed.</p>
+
+        <label>Current Password</label>
+        <input id="currentPassword" type="password">
+
+        <label>New Password</label>
+        <input id="newPassword" type="password">
+
+        <div id="updateArea">
+          <button onclick="updateProfile()">Update</button>
+        </div>
+
+      </div>
+
+      <!-- Dashboard page -->
+      <div id="dashboard" class="page">
+
+        <h2>Dashboard</h2>
+        <hr>
+
+        <p>Choose a job to apply for or save.</p>
+
+        <label>Available Jobs</label>
+        <select id="jobChoice" onchange="showJobDetails()">
+          <option value="0">Junior Web Developer</option>
+          <option value="1">UI Design Intern</option>
+          <option value="2">Data Entry Assistant</option>
+        </select>
+
+        <label>Job Details</label>
+        <textarea id="jobDetails" rows="5" readonly></textarea>
+
+        <div class="buttonRow">
+          <button onclick="startApplication()">Apply</button>
+          <button onclick="saveJob()">Save Job</button>
+        </div>
+
+      </div>
+
+      <!-- Applications page -->
+      <div id="applications" class="page">
+
+        <h2>Applications</h2>
+        <hr>
+
+        <h3>Create or Edit Application</h3>
+
+        <p class="note">
+          To create an application, first click Apply on the Dashboard.
+        </p>
+
+        <label>Selected Job</label>
+        <input id="applicationJob" type="text" readonly>
+
+        <label>Choose Resume</label>
+        <select id="applicationResume"></select>
+
+        <label>Cover Letter</label>
+        <textarea id="coverLetter" rows="4"></textarea>
+
+        <div class="buttonRow">
+          <button onclick="submitApplication()">Submit / Update</button>
+          <button class="gray" onclick="clearApplication()">Clear</button>
+        </div>
+
+        <h3>Submitted Applications</h3>
+
+        <select id="applicationList" onchange="showApplication()">
+          <option value="">No applications</option>
+        </select>
+
+        <label>Application Details</label>
+        <textarea id="applicationDetails" rows="7" readonly></textarea>
+
+        <div class="buttonRow">
+          <button onclick="editApplication()">Edit Selected</button>
+          <button class="red" onclick="withdrawApplication()">
+            Withdraw Selected
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Resumes page -->
+      <div id="resumes" class="page">
+
+        <h2>Resumes</h2>
+        <hr>
+
+        <label>Resume Title</label>
+        <input id="resumeTitle" type="text">
+
+        <label>Education, Experience and Skills</label>
+        <textarea id="resumeInformation" rows="5"></textarea>
+
+        <label>Upload or Replace File (optional)</label>
+        <input id="resumeFile" type="file" accept=".pdf,.doc,.docx,.txt">
+
+        <p class="note">
+          You may create a text resume without uploading a file.
+          When editing, leave the file field empty to keep the old file.
+        </p>
+
+        <div class="buttonRow">
+          <button onclick="saveResume()">Save Resume</button>
+          <button class="gray" onclick="clearResume()">Clear</button>
+        </div>
+
+        <h3>Your Resumes</h3>
+
+        <select id="resumeList" onchange="showResume()">
+          <option value="">No resumes</option>
+        </select>
+
+        <label>Resume Details</label>
+        <textarea id="resumeDetails" rows="7" readonly></textarea>
+
+        <div class="buttonRow">
+          <button onclick="editResume()">Edit Selected</button>
+          <button class="red" onclick="deleteResume()">Delete Selected</button>
+        </div>
+
+      </div>
+
+      <!-- Saved jobs page -->
+      <div id="savedJobs" class="page">
+
+        <h2>Saved Jobs</h2>
+        <hr>
+
+        <label>Your Saved Jobs</label>
+        <select id="savedList" onchange="showSavedJob()">
+          <option value="">No saved jobs</option>
+        </select>
+
+        <label>Job Details</label>
+        <textarea id="savedDetails" rows="5" readonly></textarea>
+
+        <label>Personal Notes</label>
+        <textarea id="savedNotes" rows="4"></textarea>
+
+        <label>Priority</label>
+        <select id="savedPriority">
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+
+        <div class="buttonRow">
+          <button onclick="updateSavedJob()">Update</button>
+          <button class="red" onclick="removeSavedJob()">Remove</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Shown after logout -->
+  <div id="logoutScreen">
+    <h2>You have logged out of the demo.</h2>
+    <button onclick="openPortal()">Open Demo Again</button>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

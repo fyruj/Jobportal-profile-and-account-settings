@@ -1,0 +1,214 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #263238;
+  background-color: #f4f6f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Main layout */
+#portal {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left sidebar */
+#sidebar {
+  width: 220px;
+  padding: 20px;
+  background-color: white;
+  border-right: 2px solid #dddddd;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar h2 {
+  margin-bottom: 35px;
+  color: #245ac5;
+}
+
+#sidebar button {
+  width: 100%;
+  margin-bottom: 12px;
+  text-align: left;
+  background-color: #edf2fc;
+  color: #24385e;
+}
+
+#sidebar button:hover {
+  background-color: #d9e5fc;
+}
+
+/* Push Logout to the bottom */
+#sidebar #logoutButton {
+  margin-top: auto;
+  margin-bottom: 0;
+  background-color: #ffe5e5;
+  color: #a51f1f;
+}
+
+/* Right content */
+#content {
+  flex: 1;
+  min-width: 0;
+  padding: 25px;
+}
+
+.page {
+  display: none;
+  max-width: 850px;
+  margin: auto;
+}
+
+/* Profile is the first visible page */
+#profile {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 50px);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin-bottom: 20px;
+}
+
+/* Profile photo */
+#photoBox {
+  width: 110px;
+  height: 110px;
+  border: 2px solid #bbbbbb;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #e6ecf5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#photo {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#photoText {
+  color: #52637d;
+  font-size: 14px;
+}
+
+/* Form fields */
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #aaaaaa;
+  border-radius: 4px;
+  background-color: white;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[readonly],
+textarea[readonly] {
+  background-color: #edf0f5;
+}
+
+button {
+  padding: 11px 18px;
+  background-color: #245ac5;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #17459e;
+}
+
+.buttonRow {
+  margin-top: 18px;
+  margin-bottom: 25px;
+}
+
+.buttonRow button {
+  margin-right: 6px;
+  margin-bottom: 8px;
+}
+
+.gray {
+  background-color: #626d7c;
+}
+
+.red {
+  background-color: #bc3030;
+}
+
+.note {
+  font-size: 14px;
+  color: #626b78;
+  line-height: 1.5;
+}
+
+/* Push Update to the bottom-right of the profile */
+#updateArea {
+  margin-top: auto;
+  padding-top: 25px;
+  text-align: right;
+}
+
+/* Logout page */
+#logoutScreen {
+  display: none;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Keep the sidebar on the left on smaller screens */
+@media (max-width: 600px) {
+  #sidebar {
+    width: 135px;
+    padding: 10px;
+  }
+
+  #sidebar h2 {
+    font-size: 20px;
+  }
+
+  #sidebar button {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+
+  #content {
+    padding: 15px;
+  }
+
+  #profile {
+    min-height: calc(100vh - 30px);
+  }
+}
