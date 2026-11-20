@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>Simple Job Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="script.js"></script>
+  
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -39,31 +41,25 @@
           <p id="photoText">Your Photo</p>
         </div>
 
-        <label>Change Photo</label>
-        <input
-          id="photoFile"
-          type="file"
-          accept="image/*"
-          onchange="changePhoto()"
-        >
+        <label for="Change Photo">Change Photo</label>
+        <input id="photoFile" type="file" accept="image/*" onchange="changePhoto()" >
 
-        <label>Name</label>
+        <label for="Name">Name</label>
         <input id="name" type="text" value="Kamrun Nahar Mahi">
 
-        <label>Email</label>
+        <label for="Email">Email</label>
         <input id="email" type="email" value="student@example.com">
 
-        <label>Phone</label>
+        <label for="Phone">Phone</label>
         <input id="phone" type="text" placeholder="Enter phone number">
 
-        <h3>Change Password</h3>
-        <p class="note">Practice fields only. No password is changed.</p>
 
-        <label>Current Password</label>
-        <input id="currentPassword" type="password">
 
-        <label>New Password</label>
-        <input id="newPassword" type="password">
+        <label for="Current Password">Current Password</label>
+        <input id="currentPassword" type="password" name="password" required />
+
+        <label for="New Password">New Password</label>
+        <input id="newPassword" type="password" required />
 
         <div id="updateArea">
           <button onclick="updateProfile()">Update</button>
@@ -80,13 +76,16 @@
         <p>Choose a job to apply for or save.</p>
 
         <label>Available Jobs</label>
+
         <select id="jobChoice" onchange="showJobDetails()">
           <option value="0">Junior Web Developer</option>
-          <option value="1">UI Design Intern</option>
+          <option value="1">UI/UX Design Intern</option>
           <option value="2">Data Entry Assistant</option>
+          <option value="3">Kernel Developer</option>
+          <option value="4">Database Management</option>
         </select>
 
-        <label>Job Details</label>
+        <label for="Job Details">Job Details</label>
         <textarea id="jobDetails" rows="5" readonly></textarea>
 
         <div class="buttonRow">
@@ -108,13 +107,13 @@
           To create an application, first click Apply on the Dashboard.
         </p>
 
-        <label>Selected Job</label>
-        <input id="applicationJob" type="text" readonly>
+        <label for="Selected Job">Selected Job</label>
+        <input id="applicationJob" type="text">
 
-        <label>Choose Resume</label>
+        <label for="Choose Resume">Choose Resume</label>
         <select id="applicationResume"></select>
 
-        <label>Cover Letter</label>
+        <label for="Cover Letter">Cover Letter</label>
         <textarea id="coverLetter" rows="4"></textarea>
 
         <div class="buttonRow">
@@ -128,8 +127,8 @@
           <option value="">No applications</option>
         </select>
 
-        <label>Application Details</label>
-        <textarea id="applicationDetails" rows="7" readonly></textarea>
+        <label for="Application Details">Application Details</label>
+        <textarea id="applicationDetails" rows="7" ></textarea>
 
         <div class="buttonRow">
           <button onclick="editApplication()">Edit Selected</button>
@@ -146,18 +145,17 @@
         <h2>Resumes</h2>
         <hr>
 
-        <label>Resume Title</label>
+        <label for="Resume Title">Resume Title</label>
         <input id="resumeTitle" type="text">
 
-        <label>Education, Experience and Skills</label>
+        <label for="Education, Experience and Skills">Education, Experience and Skills</label>
         <textarea id="resumeInformation" rows="5"></textarea>
 
-        <label>Upload or Replace File (optional)</label>
+        <label for="Upload or Replace File (optional)">Upload or Replace File (optional)</label>
         <input id="resumeFile" type="file" accept=".pdf,.doc,.docx,.txt">
 
-        <p class="note">
-          You may create a text resume without uploading a file.
-          When editing, leave the file field empty to keep the old file.
+        <p>
+    
         </p>
 
         <div class="buttonRow">
@@ -171,7 +169,7 @@
           <option value="">No resumes</option>
         </select>
 
-        <label>Resume Details</label>
+        <label for="Resume Details">Resume Details</label>
         <textarea id="resumeDetails" rows="7" readonly></textarea>
 
         <div class="buttonRow">
@@ -187,18 +185,18 @@
         <h2>Saved Jobs</h2>
         <hr>
 
-        <label>Your Saved Jobs</label>
+        <label for="Your Saved Jobs">Your Saved Jobs</label>
         <select id="savedList" onchange="showSavedJob()">
           <option value="">No saved jobs</option>
         </select>
 
-        <label>Job Details</label>
+        <label for="Job Details">Job Details</label>
         <textarea id="savedDetails" rows="5" readonly></textarea>
 
-        <label>Personal Notes</label>
+        <label for="Personal Notes">Personal Notes</label>
         <textarea id="savedNotes" rows="4"></textarea>
 
-        <label>Priority</label>
+        <label for="Priority">Priority</label>
         <select id="savedPriority">
           <option>Low</option>
           <option>Medium</option>
@@ -217,11 +215,11 @@
 
   <!-- Shown after logout -->
   <div id="logoutScreen">
-    <h2>You have logged out of the demo.</h2>
-    <button onclick="openPortal()">Open Demo Again</button>
+    <h2>You have logged out.</h2>
+    <button onclick="openPortal()">Login Again</button>
   </div>
 
-  <script src="script.js"></script>
+  
 
 </body>
 </html>

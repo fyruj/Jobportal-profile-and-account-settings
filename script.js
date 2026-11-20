@@ -4,13 +4,17 @@
 var jobTitles = [
   "Junior Web Developer",
   "UI Design Intern",
-  "Data Entry Assistant"
+  "Data Entry Assistant",
+  "Kernel Developer",
+  "Database Management"
 ];
 
 var jobDetails = [
   "Company: Bright Software\nLocation: Dhaka\nWork: Build simple websites.",
   "Company: Creative Studio\nLocation: Remote\nWork: Help design website pages.",
-  "Company: Office Solutions\nLocation: Chattogram\nWork: Enter and organize data."
+  "Company: Office Solutions\nLocation: Chattogram\nWork: Enter and organize data.",
+  "Company: Studio Jhakanaka Jhikimiki\nLocation: Khulna\nWork: Deal with operating system operations.",
+  "Company: Kothin obosta\nLocation: Sundarban\nWork: Manage whole company's data and servers."
 ];
 
 // Our information is kept in arrays.
